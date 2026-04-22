@@ -1,0 +1,8 @@
+alias \
+\
+ ls="ls --color=auto" \
+ ll="ls -lah" \
+ ..="cd .." \
+bat="batcat" \
+grep="grep --color=auto" \
+clear="clear && showBanner" \
