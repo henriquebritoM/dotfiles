@@ -1,5 +1,5 @@
 -- nvim config
-
+				
 -- auto install vim-plug and plugins, if not found
 local data_dir = vim.fn.stdpath('data')
 if vim.fn.empty(vim.fn.glob(data_dir .. '/site/autoload/plug.vim')) == 1 then
