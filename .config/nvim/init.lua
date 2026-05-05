@@ -18,11 +18,20 @@ vim.call('plug#begin')
 
 -- my plugins here
 Plug('catppuccin/nvim', { ['as'] = 'catppuccin' }) --colorscheme
-
-
+Plug('nvim-lualine/lualine.nvim') --statusline
+Plug('nvim-tree/nvim-web-devicons') --pretty icons
+Plug('folke/which-key.nvim') --mappings popup
+Plug('nvim-treesitter/nvim-treesitter') --improved syntax
 
 vim.call('plug#end')
 
 -- Configs
 
 require("config.options")
+
+
+-- Plugins 
+require("plugins.lualine")
+require("plugins.colorscheme")
+require("plugins.which-key")
+require("plugins.tree-sitter")
