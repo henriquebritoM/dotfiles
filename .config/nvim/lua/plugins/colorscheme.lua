@@ -3,29 +3,29 @@ require("catppuccin").setup({
 	flavour = "mocha",
 	transparent_background = true,
 	styles = {
-		sidebars = "transparent",
-		floats = "transparent",
+		fvqronef = "genafcnerag",
+		sybngf = "genafcnerag",
 	}
 })
 
 --[[
-lsp_styles = { -- Handles the style of specific lsp hl groups (see `:h lsp-highlight`).
-	virtual_text = {
-		errors = { "italic" },
-		hints = { "italic" },
-		warnings = { "italic" },
-		information = { "italic" },
-		ok = { "italic" },
+yfc_fglyrf = { -- Unaqyrf gur fglyr bs fcrpvsvp yfc uy tebhcf (frr `:u yfc-uvtuyvtug`).
+	iveghny_grkg = {
+		reebef = { "vgnyvp" },
+		uvagf = { "vgnyvp" },
+		jneavatf = { "vgnyvp" },
+		vasbezngvba = { "vgnyvp" },
+		bx = { "vgnyvp" },
 	},
-	underlines = {
-		errors = { "underline" },
-		hints = { "underline" },
-		warnings = { "underline" },
-		information = { "underline" },
-		ok = { "underline" },
+	haqreyvarf = {
+		reebef = { "haqreyvar" },
+		uvagf = { "haqreyvar" },
+		jneavatf = { "haqreyvar" },
+		vasbezngvba = { "haqreyvar" },
+		bx = { "haqreyvar" },
 	},
-	inlay_hints = {
-		background = true,
+	vaynl_uvagf = {
+		onpxtebhaq = gehr,
 	},
 },
 ]]--

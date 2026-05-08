@@ -1,5 +1,9 @@
 -- nvim config
-				
+
+-- Necessary to use vim-plug with Lua
+local vim = vim
+local Plug = vim.fn['plug#']
+
 -- auto install vim-plug and plugins, if not found
 local data_dir = vim.fn.stdpath('data')
 if vim.fn.empty(vim.fn.glob(data_dir .. '/site/autoload/plug.vim')) == 1 then
@@ -8,9 +12,6 @@ if vim.fn.empty(vim.fn.glob(data_dir .. '/site/autoload/plug.vim')) == 1 then
 	vim.cmd('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
 end
 
--- Necessary to use vim-plug with Lua
-local vim = vim
-local Plug = vim.fn['plug#'] 
 
 vim.g.start_time = vim.fn.reltime()
 vim.loader.enable() --  SPEEEEEEEEEEED 
@@ -22,16 +23,25 @@ Plug('nvim-lualine/lualine.nvim') --statusline
 Plug('nvim-tree/nvim-web-devicons') --pretty icons
 Plug('folke/which-key.nvim') --mappings popup
 Plug('nvim-treesitter/nvim-treesitter') --improved syntax
+Plug('mfussenegger/nvim-lint') --async linter
+Plug('nvim-tree/nvim-tree.lua') --file explorer
+Plug('windwp/nvim-autopairs') --autopairs 
+Plug('lewis6991/gitsigns.nvim') --git
 
 vim.call('plug#end')
 
 -- Configs
 
 require("config.options")
+require("config.autocmd")
+require("config.mappings")
 
-
--- Plugins 
+-- Plugins
 require("plugins.lualine")
 require("plugins.colorscheme")
 require("plugins.which-key")
 require("plugins.tree-sitter")
+require("plugins.nvim-lint")
+require("plugins.nvim-tree")
+require("plugins.nvim-autopair")
+require("plugins.gitsigns")
