@@ -25,8 +25,12 @@ Plug('folke/which-key.nvim') --mappings popup
 Plug('nvim-treesitter/nvim-treesitter') --improved syntax
 Plug('mfussenegger/nvim-lint') --async linter
 Plug('nvim-tree/nvim-tree.lua') --file explorer
-Plug('windwp/nvim-autopairs') --autopairs 
+Plug('windwp/nvim-autopairs') --autopairs
 Plug('lewis6991/gitsigns.nvim') --git
+Plug('gelguy/wilder.nvim') --commands autocomplete
+Plug('numToStr/Comment.nvim') --easier comments
+Plug('ibhagwan/fzf-lua') --fuzzy finder and grep
+-- Plug('norcalli/nvim-colorizer.lua') --color highlight
 
 vim.call('plug#end')
 
@@ -37,6 +41,7 @@ require("config.autocmd")
 require("config.mappings")
 
 -- Plugins
+
 require("plugins.lualine")
 require("plugins.colorscheme")
 require("plugins.which-key")
@@ -45,3 +50,6 @@ require("plugins.nvim-lint")
 require("plugins.nvim-tree")
 require("plugins.nvim-autopair")
 require("plugins.gitsigns")
+require("plugins.wilder")
+require("plugins.comment")
+require("plugins.fzf-lua")
