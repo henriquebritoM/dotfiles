@@ -12,7 +12,6 @@ if vim.fn.empty(vim.fn.glob(data_dir .. '/site/autoload/plug.vim')) == 1 then
 	vim.cmd('autocmd VimEnter * PlugInstall --sync | source $MYVIMRC')
 end
 
-
 vim.g.start_time = vim.fn.reltime()
 vim.loader.enable() --  SPEEEEEEEEEEED 
 vim.call('plug#begin')
@@ -31,6 +30,7 @@ Plug('gelguy/wilder.nvim') --commands autocomplete
 Plug('numToStr/Comment.nvim') --easier comments
 Plug('ibhagwan/fzf-lua') --fuzzy finder and grep
 -- Plug('norcalli/nvim-colorizer.lua') --color highlight
+Plug('numToStr/FTerm.nvim') --floating terminal
 
 vim.call('plug#end')
 
@@ -53,3 +53,4 @@ require("plugins.gitsigns")
 require("plugins.wilder")
 require("plugins.comment")
 require("plugins.fzf-lua")
+require("plugins.fterm")

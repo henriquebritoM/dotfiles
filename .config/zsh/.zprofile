@@ -3,7 +3,7 @@
 # add `export ZDOTDIR="$HOME/.config/zsh"` to /etc/zsh/zshenv in order to place this file at .config/zsh/.zprofile
 
 # default programs
-export EDITOR="nano"
+export EDITOR="nvim"
 # export TERM="xterm-256color"
 export TERM="konsole-256color"
 export TERMINAL="konsole"
@@ -47,7 +47,7 @@ export FZF_CTRL_R_OPTS="--style minimal --color 16 --info inline --no-sort --no-
 export MANPAGER="less -R --use-color -Dd+r -Du+b" # colored man pages
 
 # colored less + termcap vars
-export LESS="-rF --use-color -Dd+r -Du+b"
+export LESS="-RF --use-color -Dd+r -Du+b"
 export LESS_TERMCAP_mb="$(printf '%b' '[1;31m')"
 export LESS_TERMCAP_md="$(printf '%b' '[1;36m')"
 export LESS_TERMCAP_me="$(printf '%b' '[0m')"
