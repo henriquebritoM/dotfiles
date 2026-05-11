@@ -31,6 +31,7 @@ Plug('numToStr/Comment.nvim') --easier comments
 Plug('ibhagwan/fzf-lua') --fuzzy finder and grep
 -- Plug('norcalli/nvim-colorizer.lua') --color highlight
 Plug('numToStr/FTerm.nvim') --floating terminal
+Plug('romgrk/barbar.nvim') --bufferline
 
 vim.call('plug#end')
 
