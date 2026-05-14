@@ -42,6 +42,7 @@ Plug("saghen/blink.cmp", { ["branch"] = "v1" })
 Plug("L3MON4D3/LuaSnip", { ["tag"] = "v2.5.0", ["do"] = "make install_jsregexp" })
 Plug("rafamadriz/friendly-snippets") --better cmp snippets
 
+Plug("neovim/nvim-lspconfig") --many lsp presets
 Plug("onsails/lspkind.nvim") --icons for completion & hover
 Plug("folke/trouble.nvim") --pretty diagnostics
 Plug("smjonas/inc-rename.nvim") --better incremental changes

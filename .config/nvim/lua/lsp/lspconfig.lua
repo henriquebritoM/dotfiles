@@ -1,27 +1,20 @@
-vim.lsp.config["*"] = {
-	capabilities = require("blink.cmp").get_lsp_capabilities(),
-}
-if true then
-	local arros = true
-end
 
--- vim.lsp.config('lua_ls', {
---   settings = {
---     Lua = {
---       diagnostics = { globals = { 'vim' } },
---       telemetry = { enable = false },
---     },
---   },
--- })
-vim.lsp.config("gopls", {})
-vim.lsp.config("clangd", {})
-vim.lsp.config("rust_analyzer", {
-	cmd = { vim.fn.trim(vim.fn.system("rustup which rust-analyzer")) },
-	filetypes = { "rust" },
-	root_markers = { "Cargo.toml" },
+vim.lsp.config('*', {
+  capabilities = require("blink.cmp").get_lsp_capabilities(),
 })
 
-vim.lsp.enable({--[[  'lua_ls' ,]]
+vim.lsp.config('lua_ls', {
+  settings = {
+    Lua = {
+      diagnostics = { globals = { 'vim' } },
+      workspace = { library = vim.api.nvim_get_runtime_file("", true) },
+      telemetry = { enable = false },
+    },
+  },
+})
+
+vim.lsp.enable({
+	--[[  'lua_ls' ,]]
 	"gopls",
 	"clangd",
 	"rust_analyzer",
