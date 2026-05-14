@@ -1,7 +1,7 @@
 require("nvim-tree").setup({
 	view = {
 		-- width = 25,
-		side = 'left',
+		side = "left",
 	},
 	sync_root_with_cwd = true, --fix to open cwd with tree
 	respect_buf_cwd = true,
@@ -14,4 +14,3 @@ require("nvim-tree").setup({
 })
 
 vim.g.nvim_tree_respect_buf_cwd = 1
-

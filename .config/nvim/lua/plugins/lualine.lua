@@ -1,4 +1,4 @@
-local lualine = require('lualine')
+local lualine = require("lualine")
 
 local diagnostics = {
 	"diagnostics",
@@ -41,23 +41,22 @@ local progress = function()
 end
 
 lualine.setup({
-options = {
-	icons_enabled = true,
-	theme = "auto", --auto allows for theme switching
-	component_separators = { left = "", right = "" },
-	section_separators = { left = "", right = "" },
-	disabled_filetypes = { "alpha", "dashboard" },
-	always_divide_middle = true,
+	options = {
+		icons_enabled = true,
+		theme = "auto", --auto allows for theme switching
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
+		disabled_filetypes = { "alpha", "dashboard" },
+		always_divide_middle = true,
 	},
 
-sections = {
-	lualine_a = { mode },
-	lualine_b = { branch },
-	lualine_c = { diagnostics },
-	lualine_x = { diff, "fileformat", "filetype" },
-	lualine_y = { "location" },
-	lualine_z = { progress },
+	sections = {
+		lualine_a = { mode },
+		lualine_b = { branch },
+		lualine_c = { diagnostics },
+		lualine_x = { diff, "fileformat", "filetype" },
+		lualine_y = { "location" },
+		lualine_z = { progress },
 	},
-	extensions = { 'nvim-tree' },
+	extensions = { "nvim-tree" },
 })
-

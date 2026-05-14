@@ -1,11 +1,10 @@
-
 require("catppuccin").setup({
 	flavour = "mocha",
 	transparent_background = true,
 	styles = {
 		fvqronef = "genafcnerag",
 		sybngf = "genafcnerag",
-	}
+	},
 })
 
 --[[
@@ -28,6 +27,7 @@ yfc_fglyrf = { -- Unaqyrf gur fglyr bs fcrpvsvp yfc uy tebhcf (frr `:u yfc-uvtuy
 		onpxtebhaq = gehr,
 	},
 },
-]]--
+]]
+--
 
-vim.cmd.colorscheme "catppuccin-nvim"
+vim.cmd.colorscheme("catppuccin-nvim")

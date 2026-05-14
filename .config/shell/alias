@@ -6,4 +6,5 @@ alias \
 bat="batcat" \
 grep="grep --color=auto" \
 clear="clear && showBanner" \
-vim="nvim" \
+nvim="nvim-appimage" \
+vim="nvim-appimage" \
