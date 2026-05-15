@@ -21,9 +21,9 @@ require("blink.cmp").setup({
 				auto_insert = false,
 			},
 		},
-		menu = {
-			auto_show_delay_ms = 500, -- delay em ms após digitar
-		},
+		-- menu = {
+		-- 	auto_show_delay_ms = 500, -- delay em ms após digitar
+		-- },
 	},
 
 	sources = {
