@@ -13,10 +13,15 @@ vim.lsp.config("lua_ls", {
 })
 
 vim.lsp.enable({
-	--[[  'lua_ls' ,]]
+	"lua_ls",
 	"gopls",
 	"clangd",
 	"rust_analyzer",
+	"bashls",
+	"yamlls",
+	"ansiblels",
+	"taplo",
+	"biome",
 })
 
 require("luasnip.loaders.from_vscode").lazy_load()

@@ -48,6 +48,9 @@ Plug("folke/trouble.nvim") --pretty diagnostics
 Plug("smjonas/inc-rename.nvim") --better incremental changes
 Plug("rachartier/tiny-code-action.nvim") --tiny code actions
 
+Plug("mason-org/mason.nvim") --packager to install linters & lsps
+Plug("WhoIsSethDaniel/mason-tool-installer.nvim") --install them
+
 vim.call("plug#end")
 
 -- Configs
@@ -79,3 +82,5 @@ require("lsp.inc-rename")
 require("lsp.lspkind")
 require("lsp.tiny-code-actions")
 require("lsp.trouble")
+require("lsp.mason")
+require("lsp.mason-tool-installer")

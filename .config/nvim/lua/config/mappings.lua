@@ -14,8 +14,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- buffers
-map("n", "<S-l>", ":bnext<CR>", { desc = "next buffer" }) --goto next buffer
-map("n", "<S-h>", ":bprevious<CR>", { desc = "previous buffer" }) --goto previous buffer
+map("n", "<S-l>", ":bprevious<CR>", { desc = "next buffer" }) --goto next buffer (right)
+map("n", "<S-h>", ":bnext<CR>", { desc = "previous buffer" }) --goto previous buffer (left)
 map("n", "<leader>q", ":BufferClose<CR>", { desc = "close buffer" }) --close current buffer (better than :q)
 map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "force close buffer" }) --force close buffer
 map("n", "<leader>U", "::bufdo bd<CR>", { desc = "close all buffers" }) --close all
