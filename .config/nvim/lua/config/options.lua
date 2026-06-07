@@ -8,8 +8,13 @@ then
 	vim.fn.mkdir(undodir, "p")
 end
 
-local options = {
+-- Used to select all columns past 80
+local colorcolumns = {}
+for i = 80, 253, 1 do
+	table.insert(colorcolumns, i)
+end
 
+local options = {
 	-- ─── UI ────
 
 	title = true, --automatic window titlebar
@@ -17,6 +22,7 @@ local options = {
 	cursorline = true, --highlight cursor line
 	termguicolors = true, --enables more colors (24 bits)
 	showcmd = false,
+	colorcolumn = "80",
 
 	-- ─── Numbers ────
 	number = true, --numbering lines

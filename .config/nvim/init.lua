@@ -37,6 +37,8 @@ Plug("ibhagwan/fzf-lua") --fuzzy finder and grep
 Plug("numToStr/FTerm.nvim") --floating terminal
 Plug("romgrk/barbar.nvim") --bufferline
 Plug("lukas-reineke/indent-blankline.nvim") --scope lines
+Plug("mluders/comfy-line-numbers.nvim") --better relative numbers
+Plug("nvim-mini/mini.move") --better line moves (no lag)
 
 Plug("saghen/blink.cmp", { ["branch"] = "v1" })
 Plug("L3MON4D3/LuaSnip", { ["tag"] = "v2.5.0", ["do"] = "make install_jsregexp" })
@@ -77,6 +79,9 @@ require("plugins.fzf-lua")
 require("plugins.ibl")
 require("plugins.fterm")
 require("plugins.blink")
+require("plugins.comfy-relative-numbers")
+require("plugins.mini-move") --better line moves (no lag)
+
 require("lsp.lspconfig")
 require("lsp.inc-rename")
 require("lsp.lspkind")

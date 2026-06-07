@@ -66,17 +66,17 @@ map("n", "<leader>fgg", ":lua require('fzf-lua').grep_cword()<CR>", { desc = "gr
 
 -- FTerm
 map("n", "<leader>t", ":lua require('FTerm').open()<CR>", { desc = "Open terminal" }) --open term
-map("t", "<Esc>", '<C-\\><C-n><CMD>lua require("FTerm").close()<CR>', { desc = "exit terminal" }) -- exit & preserves session
+map("t", "<Esc>", '<C-\\><C-n><Cmd>lua require("FTerm").close()<CR>', { desc = "exit terminal" }) -- exit & preserves session
 
 --trouble
--- map("n", "<leader>xx", "<cmd>Trouble diagnostics toggle<CR>", { desc = "workspace diganostics" }) -- , "Trouble: workspace diagnostics")
-map("n", "<leader>xb", "<cmd>Trouble diagnostics toggle filter.buf=0<CR>", { desc = "Buffer diagnostics" }) -- , "Trouble: buffer diagnostics")
-map("n", "<leader>xq", "<cmd>Trouble qflist toggle<CR>", { desc = "Quick fix list" }) -- , "Trouble: quickfix list")
+-- map("n", "<leader>xx", "<Cmd>Trouble diagnostics toggle<CR>", { desc = "workspace diganostics" }) -- , "Trouble: workspace diagnostics")
+map("n", "<leader>xb", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", { desc = "Buffer diagnostics" }) -- , "Trouble: buffer diagnostics")
+map("n", "<leader>xq", "<Cmd>Trouble qflist toggle<CR>", { desc = "Quick fix list" }) -- , "Trouble: quickfix list")
 
 --lsp
 map("n", "K", vim.lsp.buf.hover, { desc = "hover docs" })
 map("n", "<leader>gd", function()
-	require("fzf-lua").lsp_definitions({ jump_to_single_result = true })
+	require("fzf-lua").lsp_definitions({ jump1 = true })
 end, { desc = "goto definition" })
 
 map({ "n", "x" }, "<leader>ca", function()
@@ -103,16 +103,23 @@ map("n", "N", "Nzzzv", { desc = "Previous match (centered)" })
 
 map({ "n", "v" }, "<leader>x", '"_d', { desc = "Delete without yanking" })
 
-map("n", "<A-j>", ":m .+1<CR>==", { desc = "Move line down" })
-map("n", "<A-k>", ":m .-2<CR>==", { desc = "Move line up" })
-map("v", "<A-j>", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-map("v", "<A-k>", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
+-- Mappings moved to mini-move, as it offers better functionality
+--[[
+map("n", "<A-j>", "<Cmd>m .+1<CR>==", { desc = "Move line down" })
+map("n", "<A-k>", "<Cmd>m .-2<CR>==", { desc = "Move line up" })
+map("v", "<A-j>", "<Cmd>m '>+1<CR>gv=gv<CR>==", { desc = "Move selection down" })
+map("v", "<A-k>", "<Cmd>m '<-2<CR>gv=gv<CR>==", { desc = "Move selection up" })
+]]
 
-map({ "v", "n" }, "<S-Tab>", "<gv", { desc = "unident selection" })
-map({ "v", "n" }, "<Tab>", ">gv", { desc = "indent selection" })
+map("v", "<S-Tab>", "<gv", { desc = "unident selection" })
+map("v", "<Tab>", ">gv", { desc = "indent selection" })
+
+map("n", "<S-Tab>", "<<", { desc = "unident current line" })
+map("n", "<Tab>", ">>", { desc = "indent current line" })
 
 map("n", "<C-d>", "<C-d>zz", { desc = "Half page down (centered)" })
 map("n", "<C-u>", "<C-u>zz", { desc = "Half page up (centered)" })
+
 map("n", "<leader>nn", function() --toggle relative vs absolute line numbers
 	if vim.wo.relativenumber then
 		vim.wo.relativenumber = false
