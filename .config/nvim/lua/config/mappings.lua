@@ -73,6 +73,21 @@ map("t", "<Esc>", '<C-\\><C-n><Cmd>lua require("FTerm").close()<CR>', { desc = "
 map("n", "<leader>xb", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", { desc = "Buffer diagnostics" }) -- , "Trouble: buffer diagnostics")
 map("n", "<leader>xq", "<Cmd>Trouble qflist toggle<CR>", { desc = "Quick fix list" }) -- , "Trouble: quickfix list")
 
+-- Options
+local toggle_trailspace_hightligth = function()
+	vim.b.minitrailspace_disable = not vim.b.minitrailspace_disable
+
+	if vim.b.minitrailspace_disable then
+		MiniTrailspace.unhighlight()
+		print("Trailspace desativado neste buffer")
+	else
+		MiniTrailspace.highlight()
+		print("Trailspace ativado neste buffer")
+	end
+end
+
+map("n", "<leader><leader>h", toggle_trailspace_hightligth, { desc = "Toggle Trailspace highlight in buffer " })
+
 --lsp
 map("n", "K", vim.lsp.buf.hover, { desc = "hover docs" })
 map("n", "<leader>gd", function()

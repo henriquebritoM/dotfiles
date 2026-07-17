@@ -34,12 +34,17 @@ setopt interactive_comments # allow comments in shell
 unsetopt prompt_sp # don't autoclean blanklines
 stty stop undef # disable accidental ctrl s
 
-# history opts
+## Histórico
 HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE="$XDG_CACHE_HOME/zsh_history" # move histfile to cache
-HISTCONTROL=ignoreboth # consecutive duplicates & commands starting with space are not saved
 
+setopt HIST_IGNORE_DUPS          
+setopt HIST_IGNORE_ALL_DUPS      
+setopt HIST_SAVE_NO_DUPS         
+setopt HIST_IGNORE_SPACE         
+setopt HIST_REDUCE_BLANKS        
+setopt HIST_EXPIRE_DUPS_FIRST    
 
 # fzf setup
 source <(fzf --zsh) # allow for fzf history widget
