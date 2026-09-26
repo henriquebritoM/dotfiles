@@ -11,6 +11,7 @@ if vim.fn.empty(vim.fn.glob(data_dir .. "/site/autoload/plug.vim")) == 1 then
 			.. data_dir
 			.. "/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 	)
+	-- vim.cmd("source " .. data_dir .. "/site/autoload/plug.vim")
 	vim.o.runtimepath = vim.o.runtimepath
 	vim.cmd("autocmd VimEnter * PlugInstall --sync | source $MYVIMRC")
 end

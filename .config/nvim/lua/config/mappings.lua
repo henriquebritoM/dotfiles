@@ -14,8 +14,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- buffers
-map("n", "<S-l>", ":bprevious<CR>", { desc = "next buffer" }) --goto next buffer (right)
-map("n", "<S-h>", ":bnext<CR>", { desc = "previous buffer" }) --goto previous buffer (left)
+map("n", "<S-l>", "<Cmd>BufferNext<CR>", { desc = "previous buffer" }) --goto previous buffer (left)
+map("n", "<S-h>", "<Cmd>BufferPrevious<CR>", { desc = "next buffer" }) --goto next buffer (right)
 map("n", "<leader>q", ":BufferClose<CR>", { desc = "close buffer" }) --close current buffer (better than :q)
 map("n", "<leader>Q", ":BufferClose!<CR>", { desc = "force close buffer" }) --force close buffer
 map("n", "<leader>U", "::bufdo bd<CR>", { desc = "close all buffers" }) --close all
@@ -58,15 +58,21 @@ end, { expr = true, desc = "up" })
 map("n", "<leader>e", ":NvimTreeToggle<CR>", { desc = "Open file explorer" }) --open file explorer
 
 -- fzf and grep
-map("n", "<leader>ff", ":lua require('fzf-lua').files()<CR>", { desc = "search in pwd" }) --search cwd
-map("n", "<leader>fh", ":lua require('fzf-lua').files({ cwd = '~/' })<CR>", { desc = "search in home" }) --search home
-map("n", "<leader>fr", ":lua require('fzf-lua').resume()<CR>", { desc = "open last search" }) --last search
-map("n", "<leader>fg", ":lua require('fzf-lua').grep()<CR>", { desc = "open grep" }) --grep
-map("n", "<leader>fgg", ":lua require('fzf-lua').grep_cword()<CR>", { desc = "grep word under cursor" }) --grep word under cursor
+local fzf = require('fzf-lua')
+
+local fzf_grep_home = function()
+	fzf.files({ cwd = "~/" })
+end
+
+map("n", "<leader>ff", fzf.files, { desc = "search in pwd" }) --search cwd
+map("n", "<leader>fh", fzf_grep_home, { desc = "search in home" }) --search home
+map("n", "<leader>fg", fzf.live_grep, { desc = "live grep" }) --grep
+map("n", "<leader>fw", fzf.grep_cword, { desc = "grep word under cursor" }) --grep word under cursor
+map("n", "<leader>fr", fzf.resume, { desc = "open last search" }) --last search
 
 -- FTerm
 map("n", "<leader>t", ":lua require('FTerm').open()<CR>", { desc = "Open terminal" }) --open term
-map("t", "<Esc>", '<C-\\><C-n><Cmd>lua require("FTerm").close()<CR>', { desc = "exit terminal" }) -- exit & preserves session
+map("t", "<Esc><Esc>", '<C-\\><C-n><Cmd>lua require("FTerm").close()<CR>', { desc = "exit terminal" }) -- exit & preserves session
 
 --trouble
 -- map("n", "<leader>xx", "<Cmd>Trouble diagnostics toggle<CR>", { desc = "workspace diganostics" }) -- , "Trouble: workspace diagnostics")
@@ -74,38 +80,54 @@ map("n", "<leader>xb", "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", { des
 map("n", "<leader>xq", "<Cmd>Trouble qflist toggle<CR>", { desc = "Quick fix list" }) -- , "Trouble: quickfix list")
 
 -- Options
-local toggle_trailspace_hightligth = function()
-	vim.b.minitrailspace_disable = not vim.b.minitrailspace_disable
+local toggle_trailspace_highlight = function()
+  -- Alterna o estado local do buffer
+  local is_disabled = not vim.b.minitrailspace_disable
+  vim.b.minitrailspace_disable = is_disabled
 
-	if vim.b.minitrailspace_disable then
-		MiniTrailspace.unhighlight()
-		print("Trailspace desativado neste buffer")
-	else
-		MiniTrailspace.highlight()
-		print("Trailspace ativado neste buffer")
-	end
+  if is_disabled then
+    MiniTrailspace.unhighlight()
+    print("Trailspace disabled for this buffer")
+  else
+    -- Ativa explicitamente no buffer atual
+    vim.b.minitrailspace_disable = nil -- É mais seguro remover/setar nil para voltar ao padrão do plugin
+    MiniTrailspace.highlight()
+    print("Trailspace enabled for this buffer")
+  end
 end
 
-map("n", "<leader><leader>h", toggle_trailspace_hightligth, { desc = "Toggle Trailspace highlight in buffer " })
+map("n", "<leader><leader>h", toggle_trailspace_highlight , { desc = "Toggle Trailspace highlight in buffer " })
 
 --lsp
-map("n", "K", vim.lsp.buf.hover, { desc = "hover docs" })
-map("n", "<leader>gd", function()
-	require("fzf-lua").lsp_definitions({ jump1 = true })
-end, { desc = "goto definition" })
 
-map({ "n", "x" }, "<leader>ca", function()
-	require("tiny-code-action").code_action()
-end, { desc = "Code action" })
-map("n", "<leader>rn", function()
+local tiny_code_action = require('tiny-code-action')
+
+local goto_def = function()
+	fzf.lsp_definitions({ jump1 = true })
+end
+
+local code_action = function()
+	tiny_code_action.code_action()
+end
+
+local inc_rename = function()
 	return ":IncRename " .. vim.fn.expand("<cword>")
-end, { expr = true, silent = false, desc = "Rename symbol" })
-map("n", "<leader>gr", function()
-	require("fzf-lua").lsp_references()
-end, { desc = "goto references" })
-map("n", "<leader>d", function()
+end
+
+local lsp_refs = function()
+	fzf.lsp_references()
+end
+
+local diagnostic_window = function()
 	vim.diagnostic.open_float({ scope = "line" })
-end, { desc = "Open diagnostic window" })
+end
+
+map("n", "K", vim.lsp.buf.hover, { desc = "hover docs" })
+map("n", "<leader>gd", goto_def, { desc = "goto definition" })
+map({ "n", "x" }, "<leader>ca", code_action, { desc = "Code action" })
+map("n", "<leader>rn", inc_rename, { expr = true, silent = false, desc = "Rename symbol" })
+map("n", "<leader>gr", lsp_refs, { desc = "goto references" })
+map("n", "<leader>d", diagnostic_window, { desc = "Open diagnostic window" })
 
 -- quality of life
 map("n", "<leader>c", ":nohlsearch<CR>", { desc = "Clear search highlight" })
@@ -117,6 +139,7 @@ map("n", "n", "nzzzv", { desc = "Next match (centered)" })
 map("n", "N", "Nzzzv", { desc = "Previous match (centered)" })
 
 map({ "n", "v" }, "<leader>x", '"_d', { desc = "Delete without yanking" })
+map({ "n", "v" }, "<leader>p", '"_p', { desc = "Paste without yanking" })
 
 -- Mappings moved to mini-move, as it offers better functionality
 --[[

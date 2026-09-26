@@ -22,7 +22,7 @@ local options = {
 	cursorline = true, --highlight cursor line
 	termguicolors = true, --enables more colors (24 bits)
 	showcmd = false,
-	colorcolumn = "80",
+	colorcolumn = "60,80,100",
 
 	-- ─── Numbers ────
 	number = true, --numbering lines

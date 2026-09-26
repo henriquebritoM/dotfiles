@@ -8,12 +8,12 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
--- linting when file is written to
-vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "InsertLeave", "TextChanged" }, {
+-- Linting when saving, entering buffer or exiting insert mode
+vim.api.nvim_create_autocmd({ "BufWritePost", "BufEnter", "InsertLeave" }, {
+	-- try_lint without arguments runs the linters defined in `linters_by_ft`
+	-- for the current filetype, on write
 	callback = function()
-		-- try_lint without arguments runs the linters defined in `linters_by_ft`
-		-- for the current filetype, on write
-		require("lint").try_lint()
+		pcall(require("lint").try_lint)
 	end,
 })
 

@@ -39,12 +39,14 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 HISTFILE="$XDG_CACHE_HOME/zsh_history" # move histfile to cache
 
-setopt HIST_IGNORE_DUPS          
-setopt HIST_IGNORE_ALL_DUPS      
-setopt HIST_SAVE_NO_DUPS         
-setopt HIST_IGNORE_SPACE         
-setopt HIST_REDUCE_BLANKS        
-setopt HIST_EXPIRE_DUPS_FIRST    
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_SPACE
+setopt HIST_REDUCE_BLANKS
+setopt HIST_EXPIRE_DUPS_FIRST
+
+setopt SHARE_HISTORY         # Importa e exporta comandos em tempo real entre terminais
+setopt EXTENDED_HISTORY
 
 # fzf setup
 source <(fzf --zsh) # allow for fzf history widget

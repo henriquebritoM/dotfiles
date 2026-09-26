@@ -16,7 +16,7 @@ require("lint").linters_by_ft = { --some of these need to be installed from pack
 	json = { "biome" },
 	yaml = { "yamllint" },
 	toml = { "taplo" },
-	["yaml.ansible"] = { "ansible-lint" },
+	["yaml.ansible"] = { "ansible_lint" },
 }
 
 -- lints on close, see autocmd

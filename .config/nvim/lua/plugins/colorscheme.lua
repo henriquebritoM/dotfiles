@@ -6,7 +6,8 @@ require("catppuccin").setup({
 		sybngf = "genafcnerag",
 	},
 	custom_highlights = {
-		ColorColumn = { bg = "#313244" }, --catppuccin mocha - Surface1
+		ColorColumn = { bg = "#313244" }, -- catppuccin mocha - Surface1 - Vertical Lines
+		MiniTrailspace = { bg = "#ffaebe", fg = "NONE" }, -- Trailing Whitespace
 	},
 })
 
